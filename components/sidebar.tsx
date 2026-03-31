@@ -2,21 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Scale,
-  FolderOpen,
-  BarChart3,
-  Archive,
-  Plus,
-  HelpCircle,
-  LogOut,
-} from "lucide-react";
+import { Scale, FolderOpen, BarChart3, HelpCircle, LogOut } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Dossier", icon: FolderOpen },
   { href: "/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/counsel", label: "Counsel", icon: Scale },
-  { href: "/archives", label: "Archives", icon: Archive },
 ];
 
 export function Sidebar() {
@@ -60,10 +50,6 @@ export function Sidebar() {
       </nav>
 
       <div className="px-4 py-6 bg-surface-container/50">
-        <button className="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-3 px-4 rounded-sm text-sm font-medium flex items-center justify-center gap-2 mb-6 hover:opacity-90 transition-opacity">
-          <Plus className="w-4 h-4" />
-          New Case File
-        </button>
         <div className="space-y-1">
           <a
             href="#"
