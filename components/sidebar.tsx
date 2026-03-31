@@ -46,10 +46,10 @@ export function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-3 text-sm transition-all ${
+              className={`flex items-center gap-3 px-4 py-3 text-sm transition-all duration-200 ${
                 isActive
                   ? "text-primary font-bold border-r-2 border-primary bg-surface-container-high/50"
-                  : "text-outline hover:bg-surface-container-high/30 hover:translate-x-1 transition-transform duration-200"
+                  : "text-outline hover:bg-surface-container-high/30 hover:translate-x-1"
               }`}
             >
               <Icon className="w-5 h-5" />
@@ -59,7 +59,7 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="px-4 py-6 border-t border-outline-variant/15">
+      <div className="px-4 py-6 bg-surface-container/50">
         <button className="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-3 px-4 rounded-sm text-sm font-medium flex items-center justify-center gap-2 mb-6 hover:opacity-90 transition-opacity">
           <Plus className="w-4 h-4" />
           New Case File

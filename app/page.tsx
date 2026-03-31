@@ -30,9 +30,12 @@ export default function DashboardPage() {
     [filters]
   );
 
-  const handleFiltersChange = useCallback((next: FilterState) => {
-    setFilters(next);
-  }, []);
+  const handleFiltersChange = useCallback(
+    (next: FilterState | ((prev: FilterState) => FilterState)) => {
+      setFilters(next);
+    },
+    []
+  );
 
   return (
     <div className="p-10 max-w-7xl mx-auto space-y-12">

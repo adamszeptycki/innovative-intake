@@ -174,9 +174,18 @@ export function filterProspects(
         break;
     }
 
-    // Scenario filter (maps to campaigns for demo)
+    // Scenario filter (maps to campaign categories for demo)
     if (filters.scenarios.length > 0) {
-      // For demo: scenarios are a secondary grouping, always pass
+      const scenarioToCampaigns: Record<string, string[]> = {
+        Litigation: ["Talc Class Action", "Hernia Mesh"],
+        Settlement: ["Auto Accident"],
+        Discovery: ["Medical Malpractice"],
+        "Pre-Trial": ["Talc Class Action", "Auto Accident"],
+      };
+      const allowed = new Set(
+        filters.scenarios.flatMap((s) => scenarioToCampaigns[s] ?? [])
+      );
+      if (!allowed.has(prospect.campaign)) return false;
     }
 
     return true;

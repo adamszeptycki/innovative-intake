@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import type { Prospect } from "@/lib/types";
 import { Avatar } from "./avatar";
 
 const MAX_VISIBLE_REBUTTALS = 2;
 
 export function ProspectRow({ prospect }: { prospect: Prospect }) {
+  const [acknowledged, setAcknowledged] = useState(false);
   const visibleRebuttals = prospect.rebuttals.slice(0, MAX_VISIBLE_REBUTTALS);
   const extraCount = prospect.rebuttals.length - MAX_VISIBLE_REBUTTALS;
 
@@ -67,8 +69,18 @@ export function ProspectRow({ prospect }: { prospect: Prospect }) {
         </div>
       </td>
       <td className="py-5 pr-4 text-right rounded-r-sm">
-        <button className="opacity-0 group-hover:opacity-100 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-sm transition-all hover:bg-primary-container">
-          View Scenario
+        <button
+          onClick={() => {
+            setAcknowledged(true);
+            setTimeout(() => setAcknowledged(false), 800);
+          }}
+          className={`opacity-0 group-hover:opacity-100 text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-sm transition-all ${
+            acknowledged
+              ? "bg-secondary text-on-secondary"
+              : "bg-primary text-on-primary hover:bg-primary-container"
+          }`}
+        >
+          {acknowledged ? "Noted" : "View Scenario"}
         </button>
       </td>
     </tr>

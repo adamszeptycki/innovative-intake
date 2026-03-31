@@ -166,7 +166,7 @@ export function ProspectFilters({
                     }
                     className="border-outline-variant/30 text-primary focus:ring-primary/20"
                   />
-                  {range === "all" ? "All" : range}
+                  {range === "all" ? "All" : range === "<70" ? "Below 70" : range}
                 </label>
               )
             )}

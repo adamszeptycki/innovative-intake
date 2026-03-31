@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Search } from "lucide-react";
 import type { Prospect, FilterState } from "@/lib/types";
 import { ProspectFilters } from "./prospect-filters";
@@ -13,19 +13,25 @@ export function ProspectTable({
 }: {
   prospects: Prospect[];
   filters: FilterState;
-  onFiltersChange: (filters: FilterState) => void;
+  onFiltersChange: (filters: FilterState | ((prev: FilterState) => FilterState)) => void;
 }) {
   const [searchInput, setSearchInput] = useState(filters.search);
+
+  const onFiltersChangeRef = useRef(onFiltersChange);
+  useEffect(() => {
+    onFiltersChangeRef.current = onFiltersChange;
+  });
 
   // Debounce search
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (searchInput !== filters.search) {
-        onFiltersChange({ ...filters, search: searchInput });
-      }
+      onFiltersChangeRef.current((prev: FilterState) => ({
+        ...prev,
+        search: searchInput,
+      }));
     }, 300);
     return () => clearTimeout(timer);
-  }, [searchInput, filters, onFiltersChange]);
+  }, [searchInput]);
 
   return (
     <section className="space-y-6">
