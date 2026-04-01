@@ -82,7 +82,7 @@ export function ProspectTable({
               <tr>
                 <td
                   colSpan={7}
-                  className="py-12 text-center text-outline italic font-headline text-lg"
+                  className="py-12 text-center text-outline font-headline text-lg"
                 >
                   No prospects match the current filters.
                 </td>

@@ -11,7 +11,7 @@ export function PerformanceCard({
         <span className="text-[0.65rem] uppercase tracking-widest text-on-primary-container font-bold mb-2 block">
           Weekly Performance
         </span>
-        <h3 className="font-headline text-2xl mb-4 italic text-on-primary">
+        <h3 className="font-headline text-2xl mb-4 font-semibold text-on-primary">
           The Barrister&apos;s Standard
         </h3>
         <p className="text-on-primary-container text-sm leading-relaxed mb-6">

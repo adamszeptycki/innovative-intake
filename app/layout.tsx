@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Newsreader, Inter } from "next/font/google";
+import { DM_Sans, Inter } from "next/font/google";
 import { Sidebar } from "@/components/sidebar";
 import { Header } from "@/components/header";
 import "./globals.css";
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const inter = Inter({
@@ -30,7 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${inter.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-surface text-on-surface font-body">
         <Sidebar />

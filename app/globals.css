@@ -63,7 +63,7 @@
   --color-on-background: #191c1e;
 
   /* Fonts */
-  --font-headline: var(--font-newsreader), serif;
+  --font-headline: var(--font-dm-sans), sans-serif;
   --font-body: var(--font-inter), sans-serif;
 }
 
