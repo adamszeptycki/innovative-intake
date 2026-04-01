@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import type { Prospect } from "@/lib/types";
 import { Avatar } from "./avatar";
 
 const MAX_VISIBLE_REBUTTALS = 2;
 
 export function ProspectRow({ prospect }: { prospect: Prospect }) {
-  const [acknowledged, setAcknowledged] = useState(false);
   const visibleRebuttals = prospect.rebuttals.slice(0, MAX_VISIBLE_REBUTTALS);
   const extraCount = prospect.rebuttals.length - MAX_VISIBLE_REBUTTALS;
 
@@ -19,7 +18,7 @@ export function ProspectRow({ prospect }: { prospect: Prospect }) {
         </span>
       </td>
       <td className="py-5">
-        <span className="text-xs bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full font-medium">
+        <span className="text-xs text-on-surface-variant font-medium whitespace-nowrap">
           {prospect.campaign}
         </span>
       </td>
@@ -32,24 +31,6 @@ export function ProspectRow({ prospect }: { prospect: Prospect }) {
         ) : (
           <span className="text-xs text-outline italic">Unassigned</span>
         )}
-      </td>
-      <td className="py-5">
-        <p className="text-xs text-outline italic max-w-xs truncate">
-          &ldquo;{prospect.transcriptionSnippet}&rdquo;
-        </p>
-      </td>
-      <td className="py-5">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-1 bg-surface-container rounded-full overflow-hidden">
-            <div
-              className="bg-secondary h-full transition-all duration-300"
-              style={{ width: `${prospect.aiScore}%` }}
-            />
-          </div>
-          <span className="text-sm font-bold text-primary">
-            {prospect.aiScore}
-          </span>
-        </div>
       </td>
       <td className="py-5">
         <div className="flex gap-1 flex-wrap">
@@ -68,20 +49,40 @@ export function ProspectRow({ prospect }: { prospect: Prospect }) {
           )}
         </div>
       </td>
+      <td className="py-5">
+        <div className="flex items-center gap-2">
+          <div className="w-10 h-1 bg-surface-container rounded-full overflow-hidden">
+            <div
+              className={`h-full transition-all duration-300 ${
+                prospect.aiScore < 40
+                  ? "bg-red-500"
+                  : prospect.aiScore <= 80
+                    ? "bg-amber-500"
+                    : "bg-green-500"
+              }`}
+              style={{ width: `${prospect.aiScore}%` }}
+            />
+          </div>
+          <span
+            className={`text-sm font-bold ${
+              prospect.aiScore < 40
+                ? "text-red-600"
+                : prospect.aiScore <= 80
+                  ? "text-amber-600"
+                  : "text-green-600"
+            }`}
+          >
+            {prospect.aiScore}
+          </span>
+        </div>
+      </td>
       <td className="py-5 pr-4 text-right rounded-r-sm">
-        <button
-          onClick={() => {
-            setAcknowledged(true);
-            setTimeout(() => setAcknowledged(false), 800);
-          }}
-          className={`opacity-0 group-hover:opacity-100 text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-sm transition-all ${
-            acknowledged
-              ? "bg-secondary text-on-secondary"
-              : "bg-primary text-on-primary hover:bg-primary-container"
-          }`}
+        <Link
+          href={`/conversations/${prospect.id}`}
+          className="opacity-0 group-hover:opacity-100 text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-sm transition-all bg-primary text-on-primary hover:bg-primary-container inline-block"
         >
-          {acknowledged ? "Noted" : "View Scenario"}
-        </button>
+          View Conversation
+        </Link>
       </td>
     </tr>
   );

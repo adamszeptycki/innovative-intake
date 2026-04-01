@@ -68,9 +68,9 @@ export function ProspectTable({
               <th className="pb-2 pl-4">Full Name</th>
               <th className="pb-2">Campaign</th>
               <th className="pb-2">Agent Name</th>
-              <th className="pb-2">Transcription Snippet</th>
-              <th className="pb-2">AI Score</th>
+
               <th className="pb-2">Rebuttals</th>
+              <th className="pb-2">AI Score</th>
               <th className="pb-2 pr-4 text-right">Actions</th>
             </tr>
           </thead>
@@ -81,7 +81,7 @@ export function ProspectTable({
             {prospects.length === 0 && (
               <tr>
                 <td
-                  colSpan={7}
+                  colSpan={6}
                   className="py-12 text-center text-outline font-headline text-lg"
                 >
                   No prospects match the current filters.

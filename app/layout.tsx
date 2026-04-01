@@ -18,7 +18,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Juris Pro | The Editorial Juris",
-  description: "Premium Legal Workspace — The Digital Barrister",
+  description: "The Digital Barrister",
 };
 
 export default function RootLayout({

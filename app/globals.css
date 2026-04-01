@@ -52,6 +52,12 @@
   --color-outline: #74777d;
   --color-outline-variant: #c4c6cd;
 
+  /* Rebuttal */
+  --color-rebuttal: #6B21A8;
+  --color-on-rebuttal: #ffffff;
+  --color-rebuttal-container: #F3E8FF;
+  --color-on-rebuttal-container: #6B21A8;
+
   /* Error */
   --color-error: #ba1a1a;
   --color-on-error: #ffffff;
@@ -71,4 +77,48 @@ body {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
   font-family: var(--font-body);
+}
+
+/* Score Slider */
+.score-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-rebuttal-container);
+  outline: none;
+  cursor: pointer;
+}
+
+.score-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-rebuttal);
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.score-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.score-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-rebuttal);
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.score-slider::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-rebuttal-container);
 }

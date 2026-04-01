@@ -4,7 +4,6 @@ import { useState, useMemo, useCallback } from "react";
 import { ClientDistribution } from "@/components/client-distribution";
 import { TopAgentsCard } from "@/components/top-agents-card";
 import { ProspectTable } from "@/components/prospect-table";
-import { FloatingActionButton } from "@/components/floating-action-button";
 import {
   prospects,
   chartDatasets,
@@ -58,8 +57,6 @@ export default function DashboardPage() {
         filters={filters}
         onFiltersChange={handleFiltersChange}
       />
-
-      <FloatingActionButton />
     </div>
   );
 }

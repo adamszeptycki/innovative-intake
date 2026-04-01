@@ -24,9 +24,6 @@ export function Sidebar() {
             Juris Dashboard
           </span>
         </div>
-        <p className="text-[0.75rem] text-outline uppercase tracking-widest font-medium">
-          Premium Legal Workspace
-        </p>
       </div>
 
       <nav className="flex-1 px-4 space-y-1">
