@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Scale, FolderOpen, BarChart3, HelpCircle, LogOut } from "lucide-react";
+import { Scale, FolderOpen, BarChart3, HelpCircle, LogOut, Settings } from "lucide-react";
 
 const navItems = [
-  { href: "/", label: "Dossier", icon: FolderOpen },
+  { href: "/", label: "Dashboard", icon: FolderOpen },
   { href: "/analytics", label: "Analytics", icon: BarChart3 },
+  { href: "/settings", label: "Settings", icon: Settings },
 ];
 
 export function Sidebar() {
