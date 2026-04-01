@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Scale, FolderOpen, BarChart3, HelpCircle, LogOut, Settings } from "lucide-react";
+import {
+  Scale,
+  FolderOpen,
+  BarChart3,
+  HelpCircle,
+  LogOut,
+  Settings,
+} from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: FolderOpen },
@@ -21,7 +28,7 @@ export function Sidebar() {
             <Scale className="w-4 h-4 text-on-primary" />
           </div>
           <span className="font-headline text-xl text-primary">
-            Juris Dashboard
+            Innovative Intake
           </span>
         </div>
       </div>
