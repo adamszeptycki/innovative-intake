@@ -2,13 +2,12 @@
 
 import { useState, useMemo, useCallback } from "react";
 import { ClientDistribution } from "@/components/client-distribution";
-import { PerformanceCard } from "@/components/performance-card";
+import { TopAgentsCard } from "@/components/top-agents-card";
 import { ProspectTable } from "@/components/prospect-table";
 import { FloatingActionButton } from "@/components/floating-action-button";
 import {
   prospects,
   chartDatasets,
-  performanceMetrics,
   filterProspects,
 } from "@/lib/mock-data";
 import type { FilterState } from "@/lib/types";
@@ -49,7 +48,7 @@ export default function DashboardPage() {
           />
         </div>
         <div className="lg:col-span-4 h-full">
-          <PerformanceCard metrics={performanceMetrics} />
+          <TopAgentsCard />
         </div>
       </section>
 
