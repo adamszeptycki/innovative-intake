@@ -118,7 +118,7 @@ export function AgentLeaderboard({ metrics }: Props) {
                       {m.agent.name}
                     </div>
                     <div className="text-[11px] text-outline">
-                      {m.totalCalls} prospects
+                      {m.campaignCount} campaigns
                     </div>
                   </div>
                 </div>

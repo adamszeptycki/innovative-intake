@@ -6,6 +6,7 @@ export interface AgentMetrics {
   conversions: number;
   conversionRate: number;
   totalCalls: number;
+  campaignCount: number;
 }
 
 export function computeAgentMetrics(
@@ -13,7 +14,7 @@ export function computeAgentMetrics(
   prospects: Prospect[]
 ): AgentMetrics[] {
   return agents.map((agent) => {
-    const assigned = prospects.filter((p) => p.agent?.name === agent.name);
+    const assigned = prospects.filter((p) => p.agent?.id === agent.id);
     const totalCalls = assigned.length;
     const conversions = assigned.filter((p) => p.status === "converted").length;
     const avgAiScore =
@@ -22,7 +23,9 @@ export function computeAgentMetrics(
         : 0;
     const conversionRate = totalCalls > 0 ? conversions / totalCalls : 0;
 
-    return { agent, avgAiScore, conversions, conversionRate, totalCalls };
+    const campaignCount = new Set(assigned.map((p) => p.campaign)).size;
+
+    return { agent, avgAiScore, conversions, conversionRate, totalCalls, campaignCount };
   });
 }
 
